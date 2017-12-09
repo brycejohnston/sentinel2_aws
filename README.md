@@ -1,6 +1,6 @@
 # sentinel_s3
 
-Ruby library for crawling and extracting Sentinel-S2 metadata from Amazon S3. Inspired by [Development Seed's sentinel-s3 python library](https://github.com/developmentseed/sentinel-s3).
+Ruby library for crawling and extracting Sentinel-2 metadata from Amazon S3. Inspired by [Development Seed's sentinel-s3 python library](https://github.com/developmentseed/sentinel-s3).
 
 ## Installation
 

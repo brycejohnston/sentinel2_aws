@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Bryce Johnston"]
   spec.email         = ["bryce@agdeveloper.com"]
 
-  spec.summary       = %q{Sentinel-S2 metadata crawler and extractor from Amazon S3}
-  spec.description   = %q{Sentinel-S2 metadata crawler and extractor from Amazon S3}
+  spec.summary       = %q{Sentinel-2 metadata crawler and extractor from Amazon S3}
+  spec.description   = %q{Sentinel-2 metadata crawler and extractor from Amazon S3}
   spec.homepage      = "https://github.com/beaorn/sentinel_s3"
   spec.license       = "MIT"
 
