@@ -48,10 +48,49 @@ module SentinelS3
       end
     end
 
-    def parse_product_info(product)
+    def get_product_info(product)
       product_str = product.split('/')
       folder = "#{product_str[1]}_#{product_str[2]}_#{product_str[3]}"
-      download_file(product, folder, "#{product_str[4]}.json")
+      filepath = download_file(product, folder, "#{product_str[4]}.json")
+      unless filepath.nil?
+        file = File.read(filepath)
+        product_info = Oj.load(file)
+        FileUtils.remove_entry(filepath)
+        tiles = []
+        product_info["tiles"].each do |tile|
+          tile_path = tile["path"]
+          tile_name = tile_path.gsub("/", "_")
+          tile = "#{tile["path"]}/tileInfo.json"
+          tile_filepath = download_file(tile, folder, "#{tile_name}.json")
+          unless tile_filepath.nil?
+            tile_file = File.read(tile_filepath)
+            tile_info = Oj.load(tile_file)
+            FileUtils.remove_entry(tile_filepath)
+
+            tile_metadata = {
+              path: tile_info["path"],
+              timestamp: tile_info["timestamp"],
+              utm_zone: tile_info["utmZone"],
+              latitude_band: tile_info["latitudeBand"],
+              grid_square: tile_info["latitudeBand"],
+              data_coverage_percentage: tile_info["dataCoveragePercentage"],
+              cloudy_pixel_percentage: tile_info["cloudyPixelPercentage"]
+            }
+            tiles << tile_metadata
+          end
+        end
+
+        metadata = {
+          name: product_info["name"],
+          id: product_info["id"],
+          path: product_info["path"],
+          timestamp: product_info["timestamp"],
+          datatake_identifier: product_info["datatakeIdentifier"],
+          scihub_ingestion: product_info["sciHubIngestion"],
+          s3_ingestion: product_info["s3Ingestion"],
+          tiles: tiles
+        }
+      end
     end
 
     def download_file(s3_file, folder, filename)
@@ -61,13 +100,14 @@ module SentinelS3
         filepath = "#{base_dir}/#{filename}"
         obj = @s3_resource.bucket(S3_BUCKET).object(s3_file)
         obj.get(response_target: filepath)
+        return filepath
       else
-        puts "Error: File doesn't exist"
+        return nil
       end
     end
 
     def remove_directory
-      FileUtils.remove_entry @directory
+      FileUtils.remove_dir(@directory)
     end
 
   end

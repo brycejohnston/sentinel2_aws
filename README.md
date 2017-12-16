@@ -26,20 +26,21 @@ Initialize SentinelS3::Client
 client = SentinelS3::Client.new("access_key_id", "secret_access_key")
 ```
 
-Get productInfo.json object paths for all products from 2017-12-14
+Get productInfo.json object paths for all products by date
 ```ruby
-products = client.get_products("2017-12-14") # YYYY-MM-DD 
+products = client.get_products("2017-12-14") # YYYY-MM-DD
 # =>
 # [
 # "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCD_20171214T234716/productInfo.json",
-# "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCE_20171214T234716/productInfo.json,
+# "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCE_20171214T234716/productInfo.json",
 # ]
 ```
 
 Get product and tile metadata
 ```ruby
+# takes single productInfo.json path returned from get_products
 product = "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCD_20171214T234716/productInfo.json"
-metadata = client.parse_product_info(product)
+metadata = client.get_product_info(product)
 ```
 
 ## Development
