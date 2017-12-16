@@ -13,22 +13,39 @@ module SentinelS3
       @directory = Dir.mktmpdir
     end
 
-    def get_products(year, month, day)
-      prefix = "products/#{year}/#{month}/#{day}/"
-      folder = "#{year}_#{month}_#{day}"
-      objects = []
+    def parse_date(date)
+      y, m, d = date.split '-'
+      y, m, d = y.to_i, m.to_i, d.to_i
+      if Date.valid_date? y, m, d
+        return [y, m, d]
+      else
+        return nil
+      end
+    end
 
-      @s3_client.list_objects(bucket: S3_BUCKET, prefix: prefix).each do |response|
-        response.contents.each do |object|
-          product_str = object.key.split(prefix)
-          product = product_str[1].split('/')
-          if product[1] == 'productInfo.json'
-            objects << object.key
+    # date format: "YYYY-MM-DD"
+    def get_products(date)
+      pdate = parse_date(date)
+      unless pdate.nil?
+        year, month, day = pdate
+        prefix = "products/#{year}/#{month}/#{day}/"
+        folder = "#{year}_#{month}_#{day}"
+        objects = []
+
+        @s3_client.list_objects(bucket: S3_BUCKET, prefix: prefix).each do |response|
+          response.contents.each do |object|
+            product_str = object.key.split(prefix)
+            product = product_str[1].split('/')
+            if product[1] == 'productInfo.json'
+              objects << object.key
+            end
           end
         end
-      end
 
-      return objects
+        return objects
+      else
+        return []
+      end
     end
 
     def parse_product_info(product)
@@ -44,7 +61,6 @@ module SentinelS3
         filepath = "#{base_dir}/#{filename}"
         obj = @s3_resource.bucket(S3_BUCKET).object(s3_file)
         obj.get(response_target: filepath)
-        puts filepath
       else
         puts "Error: File doesn't exist"
       end
