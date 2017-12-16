@@ -69,6 +69,11 @@ metadata = client.get_product_info(product)
 }
 ```
 
+Download tile data `download_tile_data(s3 tile path, file, output path)`
+```ruby
+client.download_tile_data("tiles/57/M/VR/2017/12/15/0", "B01.jp2", "/path/that/exists")
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

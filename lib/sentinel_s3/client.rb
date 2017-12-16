@@ -106,6 +106,18 @@ module SentinelS3
       end
     end
 
+    def download_tile_data(tile_path, filename, output_path)
+      s3_file = "#{tile_path}/#{filename}"
+      if @s3_resource.bucket(S3_BUCKET).object(s3_file).exists?
+        filepath = "#{output_path}/#{filename}"
+        obj = @s3_resource.bucket(S3_BUCKET).object(s3_file)
+        obj.get(response_target: filepath)
+        return filepath
+      else
+        return nil
+      end
+    end
+
     def remove_directory
       FileUtils.remove_dir(@directory)
     end
