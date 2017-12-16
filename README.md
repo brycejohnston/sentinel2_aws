@@ -5,7 +5,7 @@
 [gem]: https://rubygems.org/gems/sentinel_s3
 
 Ruby library for extracting Sentinel-2 tile metadata and downloading tile data from [Amazon S3](https://aws.amazon.com/public-datasets/sentinel-2/).
-This was created to be the primary mechanism for inserting data into the [Sentinel-2 S3 Search API](https://github.com/beaorn/s2) project.
+This is the primary mechanism for retrieving data for the [Sentinel-2 S3 Search API](https://github.com/beaorn/s2) project.
 
 ## Installation
 
@@ -30,9 +30,9 @@ Initialize SentinelS3::Client
 client = SentinelS3::Client.new("access_key_id", "secret_access_key")
 ```
 
-Get productInfo.json object paths for all products by date
+Get productInfo.json object paths for all products by date: `get_products("YYYY-MM-DD")`
 ```ruby
-products = client.get_products("2017-12-14") # YYYY-MM-DD
+products = client.get_products("2017-12-14")
 # =>
 # [
 # "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCD_20171214T234716/productInfo.json",
@@ -43,7 +43,7 @@ products = client.get_products("2017-12-14") # YYYY-MM-DD
 Get product and tile metadata
 ```ruby
 # takes single productInfo.json path returned from get_products
-product = "products/2017/12/15/S2B_MSIL1C_20171215T235729_N0206_R030_T57MVR_20171216T010047productInfo.json"
+product = "products/2017/12/15/S2B_MSIL1C_20171215T235729_N0206_R030_T57MVR_20171216T010047/productInfo.json"
 metadata = client.get_product_info(product)
 # =>
 {
@@ -69,7 +69,7 @@ metadata = client.get_product_info(product)
 }
 ```
 
-Download tile data `download_tile_data(s3 tile path, file, output path)`
+Download tile data: `download_tile_data(s3 tile path, file, output path)`
 ```ruby
 client.download_tile_data("tiles/57/M/VR/2017/12/15/0", "B01.jp2", "/path/that/exists")
 ```
