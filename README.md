@@ -1,6 +1,9 @@
 # sentinel_s3
 
-Ruby library for extracting Sentinel-2 tile metadata from [Amazon S3](https://aws.amazon.com/public-datasets/sentinel-2/).
+[![Gem Version](http://img.shields.io/gem/v/sentinel_s3.svg)][gem]
+[gem]: https://rubygems.org/gems/sentinel_s3
+
+Ruby library for extracting Sentinel-2 tile metadata and downloading tile data from [Amazon S3](https://aws.amazon.com/public-datasets/sentinel-2/).
 This was created to be the primary mechanism for inserting data into the [Sentinel-2 S3 Search API](https://github.com/beaorn/s2) project.
 
 ## Installation
