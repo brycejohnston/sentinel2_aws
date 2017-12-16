@@ -1,6 +1,6 @@
 # sentinel_s3
 
-Ruby library for crawling and extracting Sentinel-2 tile metadata from Amazon S3.
+Ruby library for crawling and extracting Sentinel-2 tile metadata from [Amazon S3](https://aws.amazon.com/public-datasets/sentinel-2/).
 This was created to be the primary mechanism for inserting data into the [Sentinel-2 S3 Search API](https://github.com/beaorn/s2) project.
 
 ## Installation
@@ -26,9 +26,20 @@ Initialize SentinelS3::Client
 client = SentinelS3::Client.new("access_key_id", "secret_access_key")
 ```
 
-Get productInfo.json objects for all products from 2017-12-14
+Get productInfo.json object paths for all products from 2017-12-14
 ```ruby
-client.get_products(2017, 12, 14)
+products = client.get_products(2017, 12, 14)
+# =>
+# [
+# "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCD_20171214T234716/productInfo.json",
+# "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCE_20171214T234716/productInfo.json,
+# ]
+```
+
+Get product and tile metadata
+```ruby
+product = "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCD_20171214T234716/productInfo.json"
+metadata = client.parse_product_info(product)
 ```
 
 ## Development
