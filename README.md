@@ -39,8 +39,30 @@ products = client.get_products("2017-12-14") # YYYY-MM-DD
 Get product and tile metadata
 ```ruby
 # takes single productInfo.json path returned from get_products
-product = "products/2017/12/14/S2B_MSIL1C_20171214T230119_N0206_R015_T58FCD_20171214T234716/productInfo.json"
+product = "products/2017/12/15/S2B_MSIL1C_20171215T235729_N0206_R030_T57MVR_20171216T010047productInfo.json"
 metadata = client.get_product_info(product)
+# =>
+{
+  :name=>"S2B_MSIL1C_20171215T235729_N0206_R030_T57MVR_20171216T010047",
+  :id=>"eaedcad9-f287-41b8-944c-0cfed0b15db8",
+  :path=> "products/2017/12/15/S2B_MSIL1C_20171215T235729_N0206_R030_T57MVR_20171216T010047",
+  :timestamp=>"2017-12-15T23:57:29.027Z",
+  :datatake_identifier=>"GS2B_20171215T235729_004060_N02.06",
+  :scihub_ingestion=>"2017-12-16T01:46:29.112Z",
+  :s3_ingestion=>"2017-12-16T01:50:49.375Z",
+  :tiles=>
+    [
+      {
+        :path=>"tiles/57/M/VR/2017/12/15/0",
+        :timestamp=>"2017-12-15T23:57:27.460Z",
+        :utm_zone=>57,
+        :latitude_band=>"M",
+        :grid_square=>"VR",
+        :data_coverage_percentage=>31.21,
+        :cloudy_pixel_percentage=>13.47
+      }
+    ]
+}
 ```
 
 ## Development
