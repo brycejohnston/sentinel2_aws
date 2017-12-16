@@ -72,7 +72,7 @@ module SentinelS3
               timestamp: tile_info["timestamp"],
               utm_zone: tile_info["utmZone"],
               latitude_band: tile_info["latitudeBand"],
-              grid_square: tile_info["latitudeBand"],
+              grid_square: tile_info["gridSquare"],
               data_coverage_percentage: tile_info["dataCoveragePercentage"],
               cloudy_pixel_percentage: tile_info["cloudyPixelPercentage"]
             }
