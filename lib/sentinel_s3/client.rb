@@ -8,7 +8,7 @@ module SentinelS3
         credentials: Aws::Credentials.new(akid, secret),
         region: S3_REGION
       })
-      @s3_resource = Aws::S3::Resource.new(region: S3_REGION, credentials: Aws::Credentials.new(akid, secret))
+      @s3_resource = Aws::S3::Resource.new
       @s3_client = Aws::S3::Client.new
       @directory = Dir.mktmpdir
     end
