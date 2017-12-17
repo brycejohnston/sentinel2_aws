@@ -14,7 +14,7 @@ module SentinelS3
     end
 
     def parse_date(date)
-      y, m, d = date.split '-'
+      y, m, d = date.split('-')
       y, m, d = y.to_i, m.to_i, d.to_i
       if Date.valid_date? y, m, d
         return [y, m, d]
@@ -67,12 +67,15 @@ module SentinelS3
             tile_info = Oj.load(tile_file)
             FileUtils.remove_entry(tile_filepath)
 
+            epsg_str = tile_info["tileGeometry"]["crs"]["properties"]["name"].split(':')
+
             tile_metadata = {
               path: tile_info["path"],
               timestamp: tile_info["timestamp"],
               utm_zone: tile_info["utmZone"],
               latitude_band: tile_info["latitudeBand"],
               grid_square: tile_info["gridSquare"],
+              epsg: epsg_str[-1],
               data_coverage_percentage: tile_info["dataCoveragePercentage"],
               cloudy_pixel_percentage: tile_info["cloudyPixelPercentage"]
             }
