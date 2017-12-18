@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sentinel2_aws (0.2.1)
+    sentinel2_aws (0.3.0)
       aws-sdk (~> 3)
       oj (< 4)
 
