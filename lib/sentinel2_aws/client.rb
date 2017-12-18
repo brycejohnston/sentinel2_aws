@@ -1,4 +1,4 @@
-module SentinelS3
+module Sentinel2Aws
   class Client
     S3_REGION = 'eu-central-1'
     S3_BUCKET = 'sentinel-s2-l1c'

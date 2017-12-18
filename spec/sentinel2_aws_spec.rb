@@ -1,6 +1,6 @@
-RSpec.describe SentinelS3 do
+RSpec.describe Sentinel2Aws do
   it "has a version number" do
-    expect(SentinelS3::VERSION).not_to be nil
+    expect(Sentinel2Aws::VERSION).not_to be nil
   end
 
   it "does something useful" do

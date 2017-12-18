@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sentinel_s3 (0.2.1)
+    sentinel2_aws (0.2.1)
       aws-sdk (~> 3)
       oj (< 4)
 
@@ -560,7 +560,7 @@ DEPENDENCIES
   bundler (~> 1.16)
   rake (~> 10.0)
   rspec (~> 3.0)
-  sentinel_s3!
+  sentinel2_aws!
 
 BUNDLED WITH
    1.16.0

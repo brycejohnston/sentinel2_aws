@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "sentinel_s3/version"
+require "sentinel2_aws/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "sentinel_s3"
-  spec.version       = SentinelS3::VERSION
+  spec.name          = "sentinel2_aws"
+  spec.version       = Sentinel2Aws::VERSION
   spec.authors       = ["Bryce Johnston"]
   spec.email         = ["bryce@agdeveloper.com"]
 
-  spec.summary       = %q{Sentinel-2 metadata extractor and tile data downloader from Amazon S3}
-  spec.description   = %q{Sentinel-2 metadata extractor and tile data downloader from Amazon S3}
-  spec.homepage      = "https://github.com/beaorn/sentinel_s3"
+  spec.summary       = %q{Sentinel-2 metadata parser and downloader from AWS}
+  spec.description   = %q{Sentinel-2 metadata parser and downloader from AWS}
+  spec.homepage      = "https://github.com/beaorn/sentinel2_aws"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

@@ -1,10 +1,10 @@
-# sentinel_s3
+# sentinel2_aws
 
-[![Gem Version](http://img.shields.io/gem/v/sentinel_s3.svg)][gem]
+[![Gem Version](http://img.shields.io/gem/v/sentinel2_aws.svg)][gem]
 
-[gem]: https://rubygems.org/gems/sentinel_s3
+[gem]: https://rubygems.org/gems/sentinel2_aws
 
-Ruby library for extracting Sentinel-2 tile metadata and downloading tile data from [Amazon S3](https://aws.amazon.com/public-datasets/sentinel-2/).
+Ruby library for parsing Sentinel-2 tile metadata and downloading tile data from [AWS](https://aws.amazon.com/public-datasets/sentinel-2/).
 This is the primary mechanism for retrieving data for the [Sentinel-2 S3 Search API](https://github.com/beaorn/s2) project.
 
 ## Installation
@@ -12,7 +12,7 @@ This is the primary mechanism for retrieving data for the [Sentinel-2 S3 Search 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sentinel_s3'
+gem 'sentinel2_aws'
 ```
 
 And then execute:
@@ -21,13 +21,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install sentinel_s3
+    $ gem install sentinel2_aws
 
 ## Usage
 
-Initialize SentinelS3::Client
+Initialize Sentinel2Aws::Client
 ```ruby
-client = SentinelS3::Client.new("access_key_id", "secret_access_key")
+client = Sentinel2Aws::Client.new("access_key_id", "secret_access_key")
 ```
 
 Get productInfo.json object paths for all products by date: `get_products("YYYY-MM-DD")`
@@ -83,7 +83,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/beaorn/sentinel_s3.
+Bug reports and pull requests are welcome on GitHub at https://github.com/beaorn/sentinel2_aws.
 
 ## License
 

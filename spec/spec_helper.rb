@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "sentinel_s3"
+require "sentinel2_aws"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
