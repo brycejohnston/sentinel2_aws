@@ -5,7 +5,7 @@
 [gem]: https://rubygems.org/gems/sentinel2_aws
 
 Ruby library for parsing Sentinel-2 tile metadata and downloading tile data from [AWS](https://aws.amazon.com/public-datasets/sentinel-2/).
-This is the primary mechanism for retrieving data for the [Sentinel-2 S3 Search API](https://github.com/beaorn/s2) project.
+This is the primary mechanism for retrieving data for the [Sentinel-2 AWS Search API](https://github.com/CropQuest/sentinel2-search-api) project.
 
 ## Installation
 
