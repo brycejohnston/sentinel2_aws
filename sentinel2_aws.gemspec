@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Sentinel-2 metadata parser and downloader from AWS}
   spec.description   = %q{Sentinel-2 metadata parser and downloader from AWS}
-  spec.homepage      = "https://github.com/beaorn/sentinel2_aws"
+  spec.homepage      = "https://github.com/satgateway/sentinel2_aws"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
